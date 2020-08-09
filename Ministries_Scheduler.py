@@ -1,6 +1,7 @@
 import xlrd
 from itertools import cycle, islice
 import csv
+import sys
 
 week1 =[]
 week2 =[]
@@ -27,12 +28,9 @@ week22=[]
 week23=[]
 week24=[]
 
-
-
 output_file = "Ministries_Schedule.csv"
 in_file = ("Ministries.xlsx")
 numWeeks = 24
-min_names = ['Sound', 'Pham Driving', 'Security', 'Ushering', 'Nursery', 'Parking Patrol']
 
 #--------------------------------Reading in ministry arrays -------------------------------------
 wb = xlrd.open_workbook(in_file)
@@ -67,11 +65,29 @@ for arrays in data:
 		while ("" in ushers):
 			ushers.remove("")
 #-------------------------------------------------
-	if headings == "Nursery":
-		nursery = arrays
-		del nursery[0]
-		while ("" in nursery):
-			nursery.remove("")
+	if headings == "Nursery AM":
+		nurseryAM = arrays
+		del nurseryAM[0]
+		while ("" in nurseryAM):
+			nurseryAM.remove("")
+#-------------------------------------------------
+	if headings == "Nursery PM":
+		nurseryPM = arrays
+		del nurseryPM[0]
+		while ("" in nurseryPM):
+			nurseryPM.remove("")
+#-------------------------------------------------
+	if headings == "Nursery Captains AM":
+		nurseryCaptAM = arrays
+		del nurseryCaptAM[0]
+		while ("" in nurseryCaptAM):
+			nurseryCaptAM.remove("")
+#-------------------------------------------------
+	if headings == "Nursery Captains PM":
+		nurseryCaptPM = arrays
+		del nurseryCaptPM[0]
+		while ("" in nurseryCaptPM):
+			nurseryCaptPM.remove("")
 #--------------------------------------------------
 	if headings == "Parking Patrol":
 		parking_patrol = arrays
@@ -113,14 +129,35 @@ usherloop = list( islice( cycle(ushers), i+1, i+1+x))
 #------------------------------------------------------------------------------------------------
 #----------------------------------------Nursery--------------------------------------------------
 
-x = 6 * numWeeks # (5 per week * number of weeks)
+x = 4 * numWeeks # (5 per week * number of weeks)
 i = -1
-nurseryloop = list( islice( cycle(nursery), i+1, i+1+x))
+nurseryloopAM = list( islice( cycle(nurseryAM), i+1, i+1+x))
+
+#------------------------------------------------------------------------------------------------
+#----------------------------------------Nursery--------------------------------------------------
+
+x = 4 * numWeeks # (5 per week * number of weeks)
+i = -1
+nurseryloopPM = list( islice( cycle(nurseryPM), i+1, i+1+x))
+
+#------------------------------------------------------------------------------------------------
+#----------------------------------------Nursery--------------------------------------------------
+
+x = 2 * numWeeks # (5 per week * number of weeks)
+i = -1
+nurseryloopCaptAM = list( islice( cycle(nurseryCaptAM), i+1, i+1+x))
+
+#------------------------------------------------------------------------------------------------
+#----------------------------------------Nursery--------------------------------------------------
+
+x = 2 * numWeeks # (5 per week * number of weeks)
+i = -1
+nurseryloopCaptPM = list( islice( cycle(nurseryCaptPM), i+1, i+1+x))
 
 #------------------------------------------------------------------------------------------------
 #----------------------------------------Parking Patrol------------------------------------------
 
-x = 5 * numWeeks # (5 per week * number of weeks)
+x = 4 * numWeeks # (5 per week * number of weeks)
 i = -1
 patrolloop = list( islice( cycle(parking_patrol), i+1, i+1+x))
 
@@ -146,169 +183,241 @@ weekly_Min(soundloop, 2, week1)
 weekly_Min(phamloop, 1, week1)
 weekly_Min(securityloop, 3, week1)
 weekly_Min(usherloop, 5, week1)
-weekly_Min(nurseryloop, 6, week1)
-weekly_Min(patrolloop, 2, week1)
+weekly_Min(nurseryloopAM, 4, week1)
+weekly_Min(nurseryloopPM, 4, week1)
+weekly_Min(nurseryloopCaptAM, 2, week1)
+weekly_Min(nurseryloopCaptPM, 2, week1)
+weekly_Min(patrolloop, 4, week1)
 
 weekly_Min(soundloop, 2, week2)
 weekly_Min(phamloop, 1, week2)
 weekly_Min(securityloop, 3, week2)
 weekly_Min(usherloop, 5, week2)
-weekly_Min(nurseryloop, 6, week2)
-weekly_Min(patrolloop, 2, week2)
+weekly_Min(nurseryloopAM, 4, week2)
+weekly_Min(nurseryloopPM, 4, week2)
+weekly_Min(nurseryloopCaptAM, 2, week2)
+weekly_Min(nurseryloopCaptPM, 2, week2)
+weekly_Min(patrolloop, 4, week2)
 
 weekly_Min(soundloop, 2, week3)
 weekly_Min(phamloop, 1, week3)
 weekly_Min(securityloop, 3, week3)
 weekly_Min(usherloop, 5, week3)
-weekly_Min(nurseryloop, 6, week3)
-weekly_Min(patrolloop, 2, week3)
+weekly_Min(nurseryloopAM, 4, week3)
+weekly_Min(nurseryloopPM, 4, week3)
+weekly_Min(nurseryloopCaptAM, 2, week3)
+weekly_Min(nurseryloopCaptPM, 2, week3)
+weekly_Min(patrolloop, 4, week3)
 
 weekly_Min(soundloop, 2, week4)
 weekly_Min(phamloop, 1, week4)
 weekly_Min(securityloop, 3, week4)
 weekly_Min(usherloop, 5, week4)
-weekly_Min(nurseryloop, 6, week4)
-weekly_Min(patrolloop, 2, week4)
+weekly_Min(nurseryloopAM, 4, week4)
+weekly_Min(nurseryloopPM, 4, week4)
+weekly_Min(nurseryloopCaptAM, 2, week4)
+weekly_Min(nurseryloopCaptPM, 2, week4)
+weekly_Min(patrolloop, 4, week4)
 
 weekly_Min(soundloop, 2, week5)
 weekly_Min(phamloop, 1, week5)
 weekly_Min(securityloop, 3, week5)
 weekly_Min(usherloop, 5, week5)
-weekly_Min(nurseryloop, 6, week5)
-weekly_Min(patrolloop, 2, week5)
+weekly_Min(nurseryloopAM, 4, week5)
+weekly_Min(nurseryloopPM, 4, week5)
+weekly_Min(nurseryloopCaptAM, 2, week5)
+weekly_Min(nurseryloopCaptPM, 2, week5)
+weekly_Min(patrolloop, 4, week5)
 
 weekly_Min(soundloop, 2, week6)
 weekly_Min(phamloop, 1, week6)
 weekly_Min(securityloop, 3, week6)
 weekly_Min(usherloop, 5, week6)
-weekly_Min(nurseryloop, 6, week6)
-weekly_Min(patrolloop, 2, week6)
+weekly_Min(nurseryloopAM, 4, week6)
+weekly_Min(nurseryloopPM, 4, week6)
+weekly_Min(nurseryloopCaptAM, 2, week6)
+weekly_Min(nurseryloopCaptPM, 2, week6)
+weekly_Min(patrolloop, 4, week6)
 
 weekly_Min(soundloop, 2, week7)
 weekly_Min(phamloop, 1, week7)
 weekly_Min(securityloop, 3, week7)
 weekly_Min(usherloop, 5, week7)
-weekly_Min(nurseryloop, 6, week7)
-weekly_Min(patrolloop, 2, week7)
+weekly_Min(nurseryloopAM, 4, week7)
+weekly_Min(nurseryloopPM, 4, week7)
+weekly_Min(nurseryloopCaptAM, 2, week7)
+weekly_Min(nurseryloopCaptPM, 2, week7)
+weekly_Min(patrolloop, 4, week7)
 
 weekly_Min(soundloop, 2, week8)
 weekly_Min(phamloop, 1, week8)
 weekly_Min(securityloop, 3, week8)
 weekly_Min(usherloop, 5, week8)
-weekly_Min(nurseryloop, 6, week8)
-weekly_Min(patrolloop, 2, week8)
+weekly_Min(nurseryloopAM, 4, week8)
+weekly_Min(nurseryloopPM, 4, week8)
+weekly_Min(nurseryloopCaptAM, 2, week8)
+weekly_Min(nurseryloopCaptPM, 2, week8)
+weekly_Min(patrolloop, 4, week8)
 
 weekly_Min(soundloop, 2, week9)
 weekly_Min(phamloop, 1, week9)
 weekly_Min(securityloop, 3, week9)
 weekly_Min(usherloop, 5, week9)
-weekly_Min(nurseryloop, 6, week9)
-weekly_Min(patrolloop, 2, week9)
+weekly_Min(nurseryloopAM, 4, week9)
+weekly_Min(nurseryloopPM, 4, week9)
+weekly_Min(nurseryloopCaptAM, 2, week9)
+weekly_Min(nurseryloopCaptPM, 2, week9)
+weekly_Min(patrolloop, 4, week9)
 
 weekly_Min(soundloop, 2, week10)
 weekly_Min(phamloop, 1, week10)
 weekly_Min(securityloop, 3, week10)
 weekly_Min(usherloop, 5, week10)
-weekly_Min(nurseryloop, 6, week10)
-weekly_Min(patrolloop, 2, week10)
+weekly_Min(nurseryloopAM, 4, week10)
+weekly_Min(nurseryloopPM, 4, week10)
+weekly_Min(nurseryloopCaptAM, 2, week10)
+weekly_Min(nurseryloopCaptPM, 2, week10)
+weekly_Min(patrolloop, 4, week10)
 
 weekly_Min(soundloop, 2, week11)
 weekly_Min(phamloop, 1, week11)
 weekly_Min(securityloop, 3, week11)
 weekly_Min(usherloop, 5, week11)
-weekly_Min(nurseryloop, 6, week11)
-weekly_Min(patrolloop, 2, week11)
+weekly_Min(nurseryloopAM, 4, week11)
+weekly_Min(nurseryloopPM, 4, week11)
+weekly_Min(nurseryloopCaptAM, 2, week11)
+weekly_Min(nurseryloopCaptPM, 2, week11)
+weekly_Min(patrolloop, 4, week11)
 
 weekly_Min(soundloop, 2, week12)
 weekly_Min(phamloop, 1, week12)
 weekly_Min(securityloop, 3, week12)
 weekly_Min(usherloop, 5, week12)
-weekly_Min(nurseryloop, 6, week12)
-weekly_Min(patrolloop, 2, week12)
+weekly_Min(nurseryloopAM, 4, week12)
+weekly_Min(nurseryloopPM, 4, week12)
+weekly_Min(nurseryloopCaptAM, 2, week12)
+weekly_Min(nurseryloopCaptPM, 2, week12)
+weekly_Min(patrolloop, 4, week12)
 
 weekly_Min(soundloop, 2, week13)
 weekly_Min(phamloop, 1, week13)
 weekly_Min(securityloop, 3, week13)
 weekly_Min(usherloop, 5, week13)
-weekly_Min(nurseryloop, 6, week13)
-weekly_Min(patrolloop, 2, week13)
+weekly_Min(nurseryloopAM, 4, week13)
+weekly_Min(nurseryloopPM, 4, week13)
+weekly_Min(nurseryloopCaptAM, 2, week13)
+weekly_Min(nurseryloopCaptPM, 2, week13)
+weekly_Min(patrolloop, 4, week13)
 
 weekly_Min(soundloop, 2, week14)
 weekly_Min(phamloop, 1, week14)
 weekly_Min(securityloop, 3, week14)
 weekly_Min(usherloop, 5, week14)
-weekly_Min(nurseryloop, 6, week14)
-weekly_Min(patrolloop, 2, week14)
+weekly_Min(nurseryloopAM, 4, week14)
+weekly_Min(nurseryloopPM, 4, week14)
+weekly_Min(nurseryloopCaptAM, 2, week14)
+weekly_Min(nurseryloopCaptPM, 2, week14)
+weekly_Min(patrolloop, 4, week14)
 
 weekly_Min(soundloop, 2, week15)
 weekly_Min(phamloop, 1, week15)
 weekly_Min(securityloop, 3, week15)
 weekly_Min(usherloop, 5, week15)
-weekly_Min(nurseryloop, 6, week15)
-weekly_Min(patrolloop, 2, week15)
+weekly_Min(nurseryloopAM, 4, week15)
+weekly_Min(nurseryloopPM, 4, week15)
+weekly_Min(nurseryloopCaptAM, 2, week15)
+weekly_Min(nurseryloopCaptPM, 2, week15)
+weekly_Min(patrolloop, 4, week15)
 
 weekly_Min(soundloop, 2, week16)
 weekly_Min(phamloop, 1, week16)
 weekly_Min(securityloop, 3, week16)
 weekly_Min(usherloop, 5, week16)
-weekly_Min(nurseryloop, 6, week16)
-weekly_Min(patrolloop, 2, week16)
+weekly_Min(nurseryloopAM, 4, week16)
+weekly_Min(nurseryloopPM, 4, week16)
+weekly_Min(nurseryloopCaptAM, 2, week16)
+weekly_Min(nurseryloopCaptPM, 2, week16)
+weekly_Min(patrolloop, 4, week16)
 
 weekly_Min(soundloop, 2, week17)
 weekly_Min(phamloop, 1, week17)
 weekly_Min(securityloop, 3, week17)
 weekly_Min(usherloop, 5, week17)
-weekly_Min(nurseryloop, 6, week17)
-weekly_Min(patrolloop, 2, week17)
+weekly_Min(nurseryloopAM, 4, week17)
+weekly_Min(nurseryloopPM, 4, week17)
+weekly_Min(nurseryloopCaptAM, 2, week17)
+weekly_Min(nurseryloopCaptPM, 2, week17)
+weekly_Min(patrolloop, 4, week17)
 
 weekly_Min(soundloop, 2, week18)
 weekly_Min(phamloop, 1, week18)
 weekly_Min(securityloop, 3, week18)
 weekly_Min(usherloop, 5, week18)
-weekly_Min(nurseryloop, 6, week18)
-weekly_Min(patrolloop, 2, week18)
+weekly_Min(nurseryloopAM, 4, week18)
+weekly_Min(nurseryloopPM, 4, week18)
+weekly_Min(nurseryloopCaptAM, 2, week18)
+weekly_Min(nurseryloopCaptPM, 2, week18)
+weekly_Min(patrolloop, 4, week18)
 
 weekly_Min(soundloop, 2, week19)
 weekly_Min(phamloop, 1, week19)
 weekly_Min(securityloop, 3, week19)
 weekly_Min(usherloop, 5, week19)
-weekly_Min(nurseryloop, 6, week19)
-weekly_Min(patrolloop, 2, week19)
+weekly_Min(nurseryloopAM, 4, week19)
+weekly_Min(nurseryloopPM, 4, week19)
+weekly_Min(nurseryloopCaptAM, 2, week19)
+weekly_Min(nurseryloopCaptPM, 2, week19)
+weekly_Min(patrolloop, 4, week19)
 
 weekly_Min(soundloop, 2, week20)
 weekly_Min(phamloop, 1, week20)
 weekly_Min(securityloop, 3, week20)
 weekly_Min(usherloop, 5, week20)
-weekly_Min(nurseryloop, 6, week20)
-weekly_Min(patrolloop, 2, week20)
+weekly_Min(nurseryloopAM, 4, week20)
+weekly_Min(nurseryloopPM, 4, week20)
+weekly_Min(nurseryloopCaptAM, 2, week20)
+weekly_Min(nurseryloopCaptPM, 2, week20)
+weekly_Min(patrolloop, 4, week20)
 
 weekly_Min(soundloop, 2, week21)
 weekly_Min(phamloop, 1, week21)
 weekly_Min(securityloop, 3, week21)
 weekly_Min(usherloop, 5, week21)
-weekly_Min(nurseryloop, 6, week21)
-weekly_Min(patrolloop, 2, week21)
+weekly_Min(nurseryloopAM, 4, week21)
+weekly_Min(nurseryloopPM, 4, week21)
+weekly_Min(nurseryloopCaptAM, 2, week21)
+weekly_Min(nurseryloopCaptPM, 2, week21)
+weekly_Min(patrolloop, 4, week21)
 
 weekly_Min(soundloop, 2, week22)
 weekly_Min(phamloop, 1, week22)
 weekly_Min(securityloop, 3, week22)
 weekly_Min(usherloop, 5, week22)
-weekly_Min(nurseryloop, 6, week22)
-weekly_Min(patrolloop, 2, week22)
+weekly_Min(nurseryloopAM, 4, week22)
+weekly_Min(nurseryloopPM, 4, week22)
+weekly_Min(nurseryloopCaptAM, 2, week22)
+weekly_Min(nurseryloopCaptPM, 2, week22)
+weekly_Min(patrolloop, 4, week22)
 
 weekly_Min(soundloop, 2, week23)
 weekly_Min(phamloop, 1, week23)
 weekly_Min(securityloop, 3, week23)
 weekly_Min(usherloop, 5, week23)
-weekly_Min(nurseryloop, 6, week23)
-weekly_Min(patrolloop, 2, week23)
+weekly_Min(nurseryloopAM, 4, week23)
+weekly_Min(nurseryloopPM, 4, week23)
+weekly_Min(nurseryloopCaptAM, 2, week23)
+weekly_Min(nurseryloopCaptPM, 2, week23)
+weekly_Min(patrolloop, 4, week23)
 
 weekly_Min(soundloop, 2, week24)
 weekly_Min(phamloop, 1, week24)
 weekly_Min(securityloop, 3, week24)
 weekly_Min(usherloop, 5, week24)
-weekly_Min(nurseryloop, 6, week24)
-weekly_Min(patrolloop, 2, week24)
+weekly_Min(nurseryloopAM, 4, week24)
+weekly_Min(nurseryloopPM, 4, week24)
+weekly_Min(nurseryloopCaptAM, 2, week24)
+weekly_Min(nurseryloopCaptPM, 2, week24)
+weekly_Min(patrolloop, 4, week24)
 
 #--------------------------- OUTPUT to CSV file -------------------------------------------
 with open(output_file,'a') as csvfile:
@@ -322,8 +431,12 @@ with open(output_file,'a') as csvfile:
 		phamWeek = []
 		securityWeek = []
 		usherWeek = []
-		nurseryWeek = []
-		parkingWeek = []
+		nurseryAMWeek = []
+		nurseryPMWeek = []
+		nurseryCaptAMWeek = []
+		nurseryCaptPMWeek = []
+		parkingWeekAM = []
+		parkingWeekPM = []
 		for i in range(len(weekNum)):
 			if 0 <= i <= 1:
 				soundWeek.append(weekNum[i])
@@ -333,19 +446,32 @@ with open(output_file,'a') as csvfile:
 				securityWeek.append(weekNum[i])
 			if 6 <= i <= 10:
 				usherWeek.append(weekNum[i])
-			if 11 <= i <= 16:
-				nurseryWeek.append(weekNum[i])
-			if 17 <= i <= 18:
-				parkingWeek.append(weekNum[i])
+			if 11 <= i <= 14:
+				nurseryAMWeek.append(weekNum[i])
+			if 15 <= i <= 18:
+				nurseryPMWeek.append(weekNum[i])
+			if 19 <= i <= 20:
+				nurseryCaptAMWeek.append(weekNum[i])
+			if 21 <= i <= 22:
+				nurseryCaptPMWeek.append(weekNum[i])
+			if 23 <= i <= 24:
+				parkingWeekAM.append(weekNum[i])
+			if 25 <= i <= 26:
+				parkingWeekPM.append(weekNum[i])
 		soundList = '\n'.join(soundWeek)
 		phamList = '\n'.join(phamWeek)
 		securityList = '\n'.join(securityWeek)
 		usherList = '\n'.join(usherWeek)
-		nurseryList = '\n'.join(nurseryWeek)
-		parkingList = '\n'.join(parkingWeek)
+		nurseryAMList = '\n'.join(nurseryAMWeek)
+		nurseryPMList = '\n'.join(nurseryPMWeek)
+		nurseryCaptAMList = '\n'.join(nurseryCaptAMWeek)
+		nurseryCaptPMList = '\n'.join(nurseryCaptPMWeek)
+		parkingListAM = '\n'.join(parkingWeekAM)
+		parkingListPM = '\n'.join(parkingWeekPM)
+
 		row1 = [week_string]
-		row2 = ["Sound", "Pham Driving", "Security", "Ushering", "Nursery", "Parking Patrol"]
-		row3 = [soundList, phamList, securityList, usherList, nurseryList, parkingList]
+		row2 = ["Sound", "Pham Driving", "Security", "Ushering", "Nursery AM", "Nursery Captains AM ", "Nursery PM", "Nursery Captains PM", "Parking Patrol AM", "Parking Patrol PM"]
+		row3 = [soundList, phamList, securityList, usherList, nurseryAMList, nurseryCaptAMList, nurseryPMList, nurseryCaptPMList, parkingListAM, parkingListPM]
 		csvwriter.writerow(row1)
 		csvwriter.writerow(row2)
 		csvwriter.writerow(row3)
