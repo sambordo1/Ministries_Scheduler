@@ -1,55 +1,65 @@
 import xlrd
 from itertools import cycle, islice
+import csv
 
-#-------------------------------Variables and Arrays----------------------------------------------
+week1 =[]
+week2 =[]
+week3 =[]
+week4 =[]
+week5 =[]
+week6 =[]
+week7 =[]
+week8 =[]
+week9 =[]
+week10=[]
+week11=[]
+week12=[]
+week13=[]
+week14=[]
+week15=[]
+week16=[]
+week17=[]
+week18=[]
+week19=[]
+week20=[]
+week21=[]
+week22=[]
+week23=[]
+week24=[]
+
+
+
+output_file = "Ministries_Schedule.csv"
+in_file = ("Ministries.xlsx")
 numWeeks = 24
-
-sound1 = []
-pham1 = []
-security1 = []
-usher1 = []
-nursery1 = []
-parking1 = []
-
-sound2 = []
-pham2 = []
-security2 = []
-usher2 = []
-nursery2 = []
-parking2 = []
-
-sound3 = []
-pham3 = []
-security3 = []
-usher3 = []
-nursery3 = []
-parking3 = []
-
-sound4 = []
-pham4 = []
-security4 = []
-usher4 = []
-nursery4 = []
-parking4 = []
-
-sound5 = []
-pham5 = []
-security5 = []
-usher5 = []
-nursery5 = []
-parking5 = []
-
-#------------------------------------------------------------------------------------------------
+min_names = ['Sound', 'Pham Driving', 'Security', 'Ushering', 'Nursery', 'Parking Patrol']
 
 #--------------------------------Reading in ministry arrays -------------------------------------
-in_file = ("Ministries.xlsx")
-
 wb = xlrd.open_workbook(in_file)
 sheet = wb.sheet_by_index(0)
 
 data = [[sheet.cell_value(r, c) for r in range(sheet.nrows)] for c in range(sheet.ncols)]
 for arrays in data:
 	headings = arrays[0]
+
+#------------------------------------------------------
+	if headings == "Sound":
+		sound = arrays
+		del sound[0]
+		while ("" in sound):
+			sound.remove("")
+#--------------------------------------------------
+	if headings == "Pham Driving":
+		pham = arrays
+		del pham[0]
+		while ("" in pham):
+			pham.remove("")
+#-------------------------------------------------
+	if headings == "Security":
+		security = arrays
+		del security[0]
+		while ("" in security):
+			security.remove("")
 #------------------------------------------------
 	if headings == "Ushering":
 		ushers = arrays
@@ -62,36 +72,12 @@ for arrays in data:
 		del nursery[0]
 		while ("" in nursery):
 			nursery.remove("")
-#-------------------------------------------------
-	if headings == "Security":
-		security = arrays
-		del security[0]
-		while ("" in security):
-			security.remove("")
 #--------------------------------------------------
 	if headings == "Parking Patrol":
 		parking_patrol = arrays
 		del parking_patrol[0]
 		while ("" in parking_patrol):
 			parking_patrol.remove("")
-#--------------------------------------------------
-	if headings == "Pham Driving":
-		pham = arrays
-		del pham[0]
-		while ("" in pham):
-			pham.remove("")
-#---------------------------------------------------
-	if headings == "Sunday School":
-		sunday_school = arrays
-		del sunday_school[0]
-		while ("" in sunday_school):
-			sunday_school.remove("")
-#------------------------------------------------------
-	if headings == "Sound":
-		sound = arrays
-		del sound[0]
-		while ("" in sound):
-			sound.remove("")
 #------------------------------------------------------------------------------------------------
 
 
@@ -127,7 +113,7 @@ usherloop = list( islice( cycle(ushers), i+1, i+1+x))
 #------------------------------------------------------------------------------------------------
 #----------------------------------------Nursery--------------------------------------------------
 
-x = 5 * numWeeks # (5 per week * number of weeks)
+x = 6 * numWeeks # (5 per week * number of weeks)
 i = -1
 nurseryloop = list( islice( cycle(nursery), i+1, i+1+x))
 
@@ -140,201 +126,257 @@ patrolloop = list( islice( cycle(parking_patrol), i+1, i+1+x))
 
 #------------------------------------------------------------------------------------------------
 
-#------------------------------Function Call-----------------------------------------------------
+#----------------------Function to Schedule without conflict-------------------------------------
 
+def weekly_Min(ministryloop, numNeeded, weekLoop):
 
-def fill_Ministries(week, array, arrayloop, numNeeded):
-	i = 0
-	if(week == 1):
-		for p in range(len(arrayloop)):
-			while(i <= (numNeeded - 1)):
-				if arrayloop[p] not in sound1:
-					if arrayloop[p] not in pham1:
-						if arrayloop[p] not in security1:
-							if arrayloop[p] not in usher1:
-								if arrayloop[p] not in nursery1:
-									if arrayloop[p] not in parking1:
-										array.append(arrayloop[p])
-										arrayloop.pop(p)
-										i += 1
-									else:
-										break
-								else:	
-									break
-							else:
-								break
-						else:
-							break
-					else:
-						break
-				else:
-					break
-	if (week == 2):
-		for p in range(len(arrayloop)):
-			while(i <= (numNeeded - 1)):
-				if arrayloop[p] not in sound2:
-					if arrayloop[p] not in pham2:
-						if arrayloop[p] not in security2:
-							if arrayloop[p] not in usher2:
-								if arrayloop[p] not in nursery2:
-									if arrayloop[p] not in parking2:
-										array.append(arrayloop[p])
-										arrayloop.pop(p)
-										i += 1
-									else:
-										break
-								else:
-									break		
-							else:
-								break
-						else:
-							break
-					else:
-						break
-				else:
-					break
-	if (week == 3):
-		for p in range(len(arrayloop)):
-			while(i <= (numNeeded - 1)):
-				if arrayloop[p] not in sound3:
-					if arrayloop[p] not in pham3:
-						if arrayloop[p] not in security3:
-							if arrayloop[p] not in usher3:
-								if arrayloop[p] not in nursery3:
-									if arrayloop[p] not in parking3:
-										array.append(arrayloop[p])
-										arrayloop.pop(p)
-										i += 1
-									else:
-										break
-								else:
-									break
-							else:
-								break
-						else:
-							break
-					else:
-						break
-				else:
-					break
-	if (week == 4):
-		for p in range(len(arrayloop)):
-			while(i <= (numNeeded - 1)):
-				if arrayloop[p] not in sound4:
-					if arrayloop[p] not in pham4:
-						if arrayloop[p] not in security4:
-							if arrayloop[p] not in usher4:
-								if arrayloop[p] not in nursery4:
-									if arrayloop[p] not in parking4:
-										array.append(arrayloop[p])
-										arrayloop.pop(p)
-										i += 1
-									else:
-										break
-								else:
-									break
-							else:
-								break
-						else:
-							break
-					else:
-						break
-				else:
-					break
-	if (week == 5):
-		for p in range(len(arrayloop)):
-			while(i <= (numNeeded - 1)):
-				if arrayloop[p] not in sound5:
-					if arrayloop[p] not in pham5:
-						if arrayloop[p] not in security5:
-							if arrayloop[p] not in usher5:
-								if arrayloop[p] not in nursery5:
-									if arrayloop[p] not in parking5:
-										array.append(arrayloop[p])
-										arrayloop.pop(p)
-										i += 1
-									else:
-										break
-								else:
-									break
-							else:
-								break
-						else:
-							break
-					else:
-						break
-				else:
-					break
-# -----------------------------------------------------------------------------------------------
-fill_Ministries(1, sound1, soundloop, 2)
-fill_Ministries(1, pham1, phamloop, 1)
-fill_Ministries(1, security1, securityloop, 3)
-fill_Ministries(1, usher1, usherloop, 5)
-fill_Ministries(1, nursery1, nurseryloop, 6)
-fill_Ministries(1, parking1, patrolloop, 5)
+	person_counter = 0
+	for index in range(len(ministryloop)):
+		while(person_counter <= (numNeeded - 1)):
+			if ministryloop[index] not in weekLoop:
+				weekLoop.append(ministryloop[index])
+				ministryloop.pop(index)
+				person_counter += 1
+			else:
+				break
+#------------------------------------------------------------------------------------------------
+				
+#----------------------Calling weekly_min to fill weekly arrays----------------------------------
+weekly_Min(soundloop, 2, week1)
+weekly_Min(phamloop, 1, week1)
+weekly_Min(securityloop, 3, week1)
+weekly_Min(usherloop, 5, week1)
+weekly_Min(nurseryloop, 6, week1)
+weekly_Min(patrolloop, 2, week1)
 
-fill_Ministries(2, sound2, soundloop, 2)
-fill_Ministries(2, pham2, phamloop, 1)
-fill_Ministries(2, security2, securityloop, 3)
-fill_Ministries(2, usher2, usherloop, 5)
-fill_Ministries(2, nursery2, nurseryloop, 6)
-fill_Ministries(2, parking2, patrolloop, 5)
+weekly_Min(soundloop, 2, week2)
+weekly_Min(phamloop, 1, week2)
+weekly_Min(securityloop, 3, week2)
+weekly_Min(usherloop, 5, week2)
+weekly_Min(nurseryloop, 6, week2)
+weekly_Min(patrolloop, 2, week2)
 
-fill_Ministries(3, sound3, soundloop, 2)
-fill_Ministries(3, pham3, phamloop, 1)
-fill_Ministries(3, security3, securityloop, 3)
-fill_Ministries(3, usher3, usherloop, 5)
-fill_Ministries(3, nursery3, nurseryloop, 6)
-fill_Ministries(3, parking3, patrolloop, 5)
+weekly_Min(soundloop, 2, week3)
+weekly_Min(phamloop, 1, week3)
+weekly_Min(securityloop, 3, week3)
+weekly_Min(usherloop, 5, week3)
+weekly_Min(nurseryloop, 6, week3)
+weekly_Min(patrolloop, 2, week3)
 
-fill_Ministries(4, sound4, soundloop, 2)
-fill_Ministries(4, pham4, phamloop, 1)
-fill_Ministries(4, security4, securityloop, 3)
-fill_Ministries(4, usher4, usherloop, 5)
-fill_Ministries(4, nursery4, nurseryloop, 6)
-fill_Ministries(4, parking4, patrolloop, 5)
+weekly_Min(soundloop, 2, week4)
+weekly_Min(phamloop, 1, week4)
+weekly_Min(securityloop, 3, week4)
+weekly_Min(usherloop, 5, week4)
+weekly_Min(nurseryloop, 6, week4)
+weekly_Min(patrolloop, 2, week4)
 
-fill_Ministries(5, sound5, soundloop, 2)
-fill_Ministries(5, pham5, phamloop, 1)
-fill_Ministries(5, security5, securityloop, 3)
-fill_Ministries(5, usher5, usherloop, 5)
-fill_Ministries(5, nursery5, nurseryloop, 6)
-fill_Ministries(5, parking5, patrolloop, 5)
+weekly_Min(soundloop, 2, week5)
+weekly_Min(phamloop, 1, week5)
+weekly_Min(securityloop, 3, week5)
+weekly_Min(usherloop, 5, week5)
+weekly_Min(nurseryloop, 6, week5)
+weekly_Min(patrolloop, 2, week5)
 
-print("------Week 1--------------------")
-print(sound1)
-print(pham1)
-print(security1)
-print(usher1)
-print(nursery1)
-print(parking1)
-print("-----Week 2---------------------")
-print(sound2)
-print(pham2)
-print(security2)
-print(usher2)
-print(nursery2)
-print(parking2)
-print("----Week 3-----------------------")
-print(sound3)
-print(pham3)
-print(security3)
-print(usher3)
-print(nursery3)
-print(parking3)
-print("----Week 4-----------------------")
-print(sound4)
-print(pham4)
-print(security4)
-print(usher4)
-print(nursery4)
-print(parking4)
-print("----Week 5-----------------------")
-print(sound5)
-print(pham5)
-print(security5)
-print(usher5)
-print(nursery5)
-print(parking5)
+weekly_Min(soundloop, 2, week6)
+weekly_Min(phamloop, 1, week6)
+weekly_Min(securityloop, 3, week6)
+weekly_Min(usherloop, 5, week6)
+weekly_Min(nurseryloop, 6, week6)
+weekly_Min(patrolloop, 2, week6)
 
+weekly_Min(soundloop, 2, week7)
+weekly_Min(phamloop, 1, week7)
+weekly_Min(securityloop, 3, week7)
+weekly_Min(usherloop, 5, week7)
+weekly_Min(nurseryloop, 6, week7)
+weekly_Min(patrolloop, 2, week7)
 
+weekly_Min(soundloop, 2, week8)
+weekly_Min(phamloop, 1, week8)
+weekly_Min(securityloop, 3, week8)
+weekly_Min(usherloop, 5, week8)
+weekly_Min(nurseryloop, 6, week8)
+weekly_Min(patrolloop, 2, week8)
+
+weekly_Min(soundloop, 2, week9)
+weekly_Min(phamloop, 1, week9)
+weekly_Min(securityloop, 3, week9)
+weekly_Min(usherloop, 5, week9)
+weekly_Min(nurseryloop, 6, week9)
+weekly_Min(patrolloop, 2, week9)
+
+weekly_Min(soundloop, 2, week10)
+weekly_Min(phamloop, 1, week10)
+weekly_Min(securityloop, 3, week10)
+weekly_Min(usherloop, 5, week10)
+weekly_Min(nurseryloop, 6, week10)
+weekly_Min(patrolloop, 2, week10)
+
+weekly_Min(soundloop, 2, week11)
+weekly_Min(phamloop, 1, week11)
+weekly_Min(securityloop, 3, week11)
+weekly_Min(usherloop, 5, week11)
+weekly_Min(nurseryloop, 6, week11)
+weekly_Min(patrolloop, 2, week11)
+
+weekly_Min(soundloop, 2, week12)
+weekly_Min(phamloop, 1, week12)
+weekly_Min(securityloop, 3, week12)
+weekly_Min(usherloop, 5, week12)
+weekly_Min(nurseryloop, 6, week12)
+weekly_Min(patrolloop, 2, week12)
+
+weekly_Min(soundloop, 2, week13)
+weekly_Min(phamloop, 1, week13)
+weekly_Min(securityloop, 3, week13)
+weekly_Min(usherloop, 5, week13)
+weekly_Min(nurseryloop, 6, week13)
+weekly_Min(patrolloop, 2, week13)
+
+weekly_Min(soundloop, 2, week14)
+weekly_Min(phamloop, 1, week14)
+weekly_Min(securityloop, 3, week14)
+weekly_Min(usherloop, 5, week14)
+weekly_Min(nurseryloop, 6, week14)
+weekly_Min(patrolloop, 2, week14)
+
+weekly_Min(soundloop, 2, week15)
+weekly_Min(phamloop, 1, week15)
+weekly_Min(securityloop, 3, week15)
+weekly_Min(usherloop, 5, week15)
+weekly_Min(nurseryloop, 6, week15)
+weekly_Min(patrolloop, 2, week15)
+
+weekly_Min(soundloop, 2, week16)
+weekly_Min(phamloop, 1, week16)
+weekly_Min(securityloop, 3, week16)
+weekly_Min(usherloop, 5, week16)
+weekly_Min(nurseryloop, 6, week16)
+weekly_Min(patrolloop, 2, week16)
+
+weekly_Min(soundloop, 2, week17)
+weekly_Min(phamloop, 1, week17)
+weekly_Min(securityloop, 3, week17)
+weekly_Min(usherloop, 5, week17)
+weekly_Min(nurseryloop, 6, week17)
+weekly_Min(patrolloop, 2, week17)
+
+weekly_Min(soundloop, 2, week18)
+weekly_Min(phamloop, 1, week18)
+weekly_Min(securityloop, 3, week18)
+weekly_Min(usherloop, 5, week18)
+weekly_Min(nurseryloop, 6, week18)
+weekly_Min(patrolloop, 2, week18)
+
+weekly_Min(soundloop, 2, week19)
+weekly_Min(phamloop, 1, week19)
+weekly_Min(securityloop, 3, week19)
+weekly_Min(usherloop, 5, week19)
+weekly_Min(nurseryloop, 6, week19)
+weekly_Min(patrolloop, 2, week19)
+
+weekly_Min(soundloop, 2, week20)
+weekly_Min(phamloop, 1, week20)
+weekly_Min(securityloop, 3, week20)
+weekly_Min(usherloop, 5, week20)
+weekly_Min(nurseryloop, 6, week20)
+weekly_Min(patrolloop, 2, week20)
+
+weekly_Min(soundloop, 2, week21)
+weekly_Min(phamloop, 1, week21)
+weekly_Min(securityloop, 3, week21)
+weekly_Min(usherloop, 5, week21)
+weekly_Min(nurseryloop, 6, week21)
+weekly_Min(patrolloop, 2, week21)
+
+weekly_Min(soundloop, 2, week22)
+weekly_Min(phamloop, 1, week22)
+weekly_Min(securityloop, 3, week22)
+weekly_Min(usherloop, 5, week22)
+weekly_Min(nurseryloop, 6, week22)
+weekly_Min(patrolloop, 2, week22)
+
+weekly_Min(soundloop, 2, week23)
+weekly_Min(phamloop, 1, week23)
+weekly_Min(securityloop, 3, week23)
+weekly_Min(usherloop, 5, week23)
+weekly_Min(nurseryloop, 6, week23)
+weekly_Min(patrolloop, 2, week23)
+
+weekly_Min(soundloop, 2, week24)
+weekly_Min(phamloop, 1, week24)
+weekly_Min(securityloop, 3, week24)
+weekly_Min(usherloop, 5, week24)
+weekly_Min(nurseryloop, 6, week24)
+weekly_Min(patrolloop, 2, week24)
+
+#--------------------------- OUTPUT to CSV file -------------------------------------------
+with open(output_file,'a') as csvfile:
+	csvwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+	csvfile.truncate(0)
+	#open csv file and remove contents
+
+#---------------------- Function Call to format csv output ---------------------------------
+	def output_to_csv(weekNum, week_string):
+		soundWeek = []
+		phamWeek = []
+		securityWeek = []
+		usherWeek = []
+		nurseryWeek = []
+		parkingWeek = []
+		for i in range(len(weekNum)):
+			if 0 <= i <= 1:
+				soundWeek.append(weekNum[i])
+			if i == 2:
+				phamWeek.append(weekNum[i])
+			if 3 <= i <= 5:
+				securityWeek.append(weekNum[i])
+			if 6 <= i <= 10:
+				usherWeek.append(weekNum[i])
+			if 11 <= i <= 16:
+				nurseryWeek.append(weekNum[i])
+			if 17 <= i <= 18:
+				parkingWeek.append(weekNum[i])
+		soundList = '\n'.join(soundWeek)
+		phamList = '\n'.join(phamWeek)
+		securityList = '\n'.join(securityWeek)
+		usherList = '\n'.join(usherWeek)
+		nurseryList = '\n'.join(nurseryWeek)
+		parkingList = '\n'.join(parkingWeek)
+		row1 = [week_string]
+		row2 = ["Sound", "Pham Driving", "Security", "Ushering", "Nursery", "Parking Patrol"]
+		row3 = [soundList, phamList, securityList, usherList, nurseryList, parkingList]
+		csvwriter.writerow(row1)
+		csvwriter.writerow(row2)
+		csvwriter.writerow(row3)
+		csvwriter.writerow("")
+#---------------------------------------------------------------------------------------------
+#------------------------------- Function Calls per week -------------------------------------
+
+	output_to_csv(week1, "Week 1")
+	output_to_csv(week2, "Week 2")
+	output_to_csv(week3, "Week 3")
+	output_to_csv(week4, "Week 4")
+	output_to_csv(week5, "Week 5")
+	output_to_csv(week6, "Week 6")
+	output_to_csv(week7, "Week 7")
+	output_to_csv(week8, "Week 8")
+	output_to_csv(week9, "Week 9")
+	output_to_csv(week10, "Week 10")
+	output_to_csv(week11, "Week 11")
+	output_to_csv(week12, "Week 12")
+	output_to_csv(week13, "Week 13")
+	output_to_csv(week14, "Week 14")
+	output_to_csv(week15, "Week 15")
+	output_to_csv(week16, "Week 16")
+	output_to_csv(week17, "Week 17")
+	output_to_csv(week18, "Week 18")
+	output_to_csv(week19, "Week 19")
+	output_to_csv(week20, "Week 20")
+	output_to_csv(week21, "Week 21")
+	output_to_csv(week22, "Week 22")
+	output_to_csv(week23, "Week 23")
+	output_to_csv(week24, "Week 24")
+
+	
+#--------------------------------------------------------------------------------------------
