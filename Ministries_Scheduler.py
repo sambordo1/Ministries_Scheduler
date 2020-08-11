@@ -2,19 +2,17 @@ import xlrd
 from itertools import cycle, islice
 import csv
 import sys
-import dateutil.relativedelta as relativedelta 
-import dateutil.rrule as rrule
-import datetime 
-year = 2020
+import pandas as pd
+
 
 #--------------------------- Getting Sunday Dates in specified year -----------------------------
-before=datetime.datetime(year,1,1)
-after=datetime.datetime(year,12,31) 
-rr = rrule.rrule(rrule.WEEKLY,byweekday=relativedelta.SU,dtstart=before) 
-print rr.between(before,after,inc=True)
-Advertisements
-#------------------------------------------------------------------------------------------------
 
+def allsundays(year):
+    return pd.date_range(start=str(year), end=str(year+1), 
+                         freq='W-SUN').strftime('%m/%d/%Y').tolist()
+
+#------------------------------------------------------------------------------------------------
+sched_year = 2020
 week1 =[]
 week2 =[]
 week3 =[]
@@ -491,30 +489,30 @@ with open(output_file,'a') as csvfile:
 #---------------------------------------------------------------------------------------------
 #------------------------------- Function Calls per week -------------------------------------
 
-	output_to_csv(week1, "Week 1")
-	output_to_csv(week2, "Week 2")
-	output_to_csv(week3, "Week 3")
-	output_to_csv(week4, "Week 4")
-	output_to_csv(week5, "Week 5")
-	output_to_csv(week6, "Week 6")
-	output_to_csv(week7, "Week 7")
-	output_to_csv(week8, "Week 8")
-	output_to_csv(week9, "Week 9")
-	output_to_csv(week10, "Week 10")
-	output_to_csv(week11, "Week 11")
-	output_to_csv(week12, "Week 12")
-	output_to_csv(week13, "Week 13")
-	output_to_csv(week14, "Week 14")
-	output_to_csv(week15, "Week 15")
-	output_to_csv(week16, "Week 16")
-	output_to_csv(week17, "Week 17")
-	output_to_csv(week18, "Week 18")
-	output_to_csv(week19, "Week 19")
-	output_to_csv(week20, "Week 20")
-	output_to_csv(week21, "Week 21")
-	output_to_csv(week22, "Week 22")
-	output_to_csv(week23, "Week 23")
-	output_to_csv(week24, "Week 24")
+	output_to_csv(week1, allsundays(2020)[1])
+	output_to_csv(week2, allsundays(2020)[2])
+	output_to_csv(week3, allsundays(2020)[3])
+	output_to_csv(week4, allsundays(2020)[4])
+	output_to_csv(week5, allsundays(2020)[5])
+	output_to_csv(week6, allsundays(2020)[6])
+	output_to_csv(week7, allsundays(2020)[7])
+	output_to_csv(week8, allsundays(2020)[8])
+	output_to_csv(week9, allsundays(2020)[9])
+	output_to_csv(week10, allsundays(2020)[10])
+	output_to_csv(week11, allsundays(2020)[11])
+	output_to_csv(week12, allsundays(2020)[12])
+	output_to_csv(week13, allsundays(2020)[13])
+	output_to_csv(week14, allsundays(2020)[14])
+	output_to_csv(week15, allsundays(2020)[15])
+	output_to_csv(week16, allsundays(2020)[16])
+	output_to_csv(week17, allsundays(2020)[17])
+	output_to_csv(week18, allsundays(2020)[18])
+	output_to_csv(week19, allsundays(2020)[19])
+	output_to_csv(week20, allsundays(2020)[20])
+	output_to_csv(week21, allsundays(2020)[21])
+	output_to_csv(week22, allsundays(2020)[22])
+	output_to_csv(week23, allsundays(2020)[23])
+	output_to_csv(week24, allsundays(2020)[24])
 
 	
 #--------------------------------------------------------------------------------------------
