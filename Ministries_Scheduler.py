@@ -2,6 +2,7 @@ import xlrd
 from itertools import cycle, islice
 import csv
 import sys
+import calendar
 
 week1 =[]
 week2 =[]
