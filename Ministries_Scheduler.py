@@ -2,7 +2,18 @@ import xlrd
 from itertools import cycle, islice
 import csv
 import sys
-import calendar
+import dateutil.relativedelta as relativedelta 
+import dateutil.rrule as rrule
+import datetime 
+year = 2020
+
+#--------------------------- Getting Sunday Dates in specified year -----------------------------
+before=datetime.datetime(year,1,1)
+after=datetime.datetime(year,12,31) 
+rr = rrule.rrule(rrule.WEEKLY,byweekday=relativedelta.SU,dtstart=before) 
+print rr.between(before,after,inc=True)
+Advertisements
+#------------------------------------------------------------------------------------------------
 
 week1 =[]
 week2 =[]
