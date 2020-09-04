@@ -516,3 +516,4 @@ with open(output_file,'a') as csvfile:
 
 	
 #--------------------------------------------------------------------------------------------
+# need to make it more scalable 
