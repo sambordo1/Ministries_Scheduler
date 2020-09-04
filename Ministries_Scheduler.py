@@ -37,10 +37,39 @@ week21=[]
 week22=[]
 week23=[]
 week24=[]
+week25=[]
+week26=[]
+week27=[]
+week28=[]
+week29=[]
+week30=[]
+week31=[]
+week32=[]
+week33=[]
+week34=[]
+week35=[]
+week36=[]
+week37=[]
+week38=[]
+week39=[]
+week40=[]
+week41=[]
+week42=[]
+week43=[]
+week44=[]
+week45=[]
+week46=[]
+week47=[]
+week48=[]
+week49=[]
+week50=[]
+week51=[]
+week52=[]
+
 
 output_file = "Ministries_Schedule.csv"
 in_file = ("Ministries.xlsx")
-numWeeks = 24
+numWeeks = 52
 
 #--------------------------------Reading in ministry arrays -------------------------------------
 wb = xlrd.open_workbook(in_file)
@@ -189,245 +218,72 @@ def weekly_Min(ministryloop, numNeeded, weekLoop):
 #------------------------------------------------------------------------------------------------
 				
 #----------------------Calling weekly_min to fill weekly arrays----------------------------------
-weekly_Min(soundloop, 2, week1)
-weekly_Min(phamloop, 1, week1)
-weekly_Min(securityloop, 3, week1)
-weekly_Min(usherloop, 5, week1)
-weekly_Min(nurseryloopAM, 4, week1)
-weekly_Min(nurseryloopPM, 4, week1)
-weekly_Min(nurseryloopCaptAM, 2, week1)
-weekly_Min(nurseryloopCaptPM, 2, week1)
-weekly_Min(patrolloop, 4, week1)
 
-weekly_Min(soundloop, 2, week2)
-weekly_Min(phamloop, 1, week2)
-weekly_Min(securityloop, 3, week2)
-weekly_Min(usherloop, 5, week2)
-weekly_Min(nurseryloopAM, 4, week2)
-weekly_Min(nurseryloopPM, 4, week2)
-weekly_Min(nurseryloopCaptAM, 2, week2)
-weekly_Min(nurseryloopCaptPM, 2, week2)
-weekly_Min(patrolloop, 4, week2)
+def call_weekly_Mins(weekNum):
+	weekly_Min(soundloop, 2, weekNum)
+	weekly_Min(phamloop, 1, weekNum)
+	weekly_Min(securityloop, 3, weekNum)
+	weekly_Min(usherloop, 5, weekNum)
+	weekly_Min(nurseryloopAM, 4, weekNum)
+	weekly_Min(nurseryloopPM, 4, weekNum)
+	weekly_Min(nurseryloopCaptAM, 2, weekNum)
+	weekly_Min(nurseryloopCaptPM, 2, weekNum)
+	weekly_Min(patrolloop, 4, weekNum)
 
-weekly_Min(soundloop, 2, week3)
-weekly_Min(phamloop, 1, week3)
-weekly_Min(securityloop, 3, week3)
-weekly_Min(usherloop, 5, week3)
-weekly_Min(nurseryloopAM, 4, week3)
-weekly_Min(nurseryloopPM, 4, week3)
-weekly_Min(nurseryloopCaptAM, 2, week3)
-weekly_Min(nurseryloopCaptPM, 2, week3)
-weekly_Min(patrolloop, 4, week3)
 
-weekly_Min(soundloop, 2, week4)
-weekly_Min(phamloop, 1, week4)
-weekly_Min(securityloop, 3, week4)
-weekly_Min(usherloop, 5, week4)
-weekly_Min(nurseryloopAM, 4, week4)
-weekly_Min(nurseryloopPM, 4, week4)
-weekly_Min(nurseryloopCaptAM, 2, week4)
-weekly_Min(nurseryloopCaptPM, 2, week4)
-weekly_Min(patrolloop, 4, week4)
 
-weekly_Min(soundloop, 2, week5)
-weekly_Min(phamloop, 1, week5)
-weekly_Min(securityloop, 3, week5)
-weekly_Min(usherloop, 5, week5)
-weekly_Min(nurseryloopAM, 4, week5)
-weekly_Min(nurseryloopPM, 4, week5)
-weekly_Min(nurseryloopCaptAM, 2, week5)
-weekly_Min(nurseryloopCaptPM, 2, week5)
-weekly_Min(patrolloop, 4, week5)
-
-weekly_Min(soundloop, 2, week6)
-weekly_Min(phamloop, 1, week6)
-weekly_Min(securityloop, 3, week6)
-weekly_Min(usherloop, 5, week6)
-weekly_Min(nurseryloopAM, 4, week6)
-weekly_Min(nurseryloopPM, 4, week6)
-weekly_Min(nurseryloopCaptAM, 2, week6)
-weekly_Min(nurseryloopCaptPM, 2, week6)
-weekly_Min(patrolloop, 4, week6)
-
-weekly_Min(soundloop, 2, week7)
-weekly_Min(phamloop, 1, week7)
-weekly_Min(securityloop, 3, week7)
-weekly_Min(usherloop, 5, week7)
-weekly_Min(nurseryloopAM, 4, week7)
-weekly_Min(nurseryloopPM, 4, week7)
-weekly_Min(nurseryloopCaptAM, 2, week7)
-weekly_Min(nurseryloopCaptPM, 2, week7)
-weekly_Min(patrolloop, 4, week7)
-
-weekly_Min(soundloop, 2, week8)
-weekly_Min(phamloop, 1, week8)
-weekly_Min(securityloop, 3, week8)
-weekly_Min(usherloop, 5, week8)
-weekly_Min(nurseryloopAM, 4, week8)
-weekly_Min(nurseryloopPM, 4, week8)
-weekly_Min(nurseryloopCaptAM, 2, week8)
-weekly_Min(nurseryloopCaptPM, 2, week8)
-weekly_Min(patrolloop, 4, week8)
-
-weekly_Min(soundloop, 2, week9)
-weekly_Min(phamloop, 1, week9)
-weekly_Min(securityloop, 3, week9)
-weekly_Min(usherloop, 5, week9)
-weekly_Min(nurseryloopAM, 4, week9)
-weekly_Min(nurseryloopPM, 4, week9)
-weekly_Min(nurseryloopCaptAM, 2, week9)
-weekly_Min(nurseryloopCaptPM, 2, week9)
-weekly_Min(patrolloop, 4, week9)
-
-weekly_Min(soundloop, 2, week10)
-weekly_Min(phamloop, 1, week10)
-weekly_Min(securityloop, 3, week10)
-weekly_Min(usherloop, 5, week10)
-weekly_Min(nurseryloopAM, 4, week10)
-weekly_Min(nurseryloopPM, 4, week10)
-weekly_Min(nurseryloopCaptAM, 2, week10)
-weekly_Min(nurseryloopCaptPM, 2, week10)
-weekly_Min(patrolloop, 4, week10)
-
-weekly_Min(soundloop, 2, week11)
-weekly_Min(phamloop, 1, week11)
-weekly_Min(securityloop, 3, week11)
-weekly_Min(usherloop, 5, week11)
-weekly_Min(nurseryloopAM, 4, week11)
-weekly_Min(nurseryloopPM, 4, week11)
-weekly_Min(nurseryloopCaptAM, 2, week11)
-weekly_Min(nurseryloopCaptPM, 2, week11)
-weekly_Min(patrolloop, 4, week11)
-
-weekly_Min(soundloop, 2, week12)
-weekly_Min(phamloop, 1, week12)
-weekly_Min(securityloop, 3, week12)
-weekly_Min(usherloop, 5, week12)
-weekly_Min(nurseryloopAM, 4, week12)
-weekly_Min(nurseryloopPM, 4, week12)
-weekly_Min(nurseryloopCaptAM, 2, week12)
-weekly_Min(nurseryloopCaptPM, 2, week12)
-weekly_Min(patrolloop, 4, week12)
-
-weekly_Min(soundloop, 2, week13)
-weekly_Min(phamloop, 1, week13)
-weekly_Min(securityloop, 3, week13)
-weekly_Min(usherloop, 5, week13)
-weekly_Min(nurseryloopAM, 4, week13)
-weekly_Min(nurseryloopPM, 4, week13)
-weekly_Min(nurseryloopCaptAM, 2, week13)
-weekly_Min(nurseryloopCaptPM, 2, week13)
-weekly_Min(patrolloop, 4, week13)
-
-weekly_Min(soundloop, 2, week14)
-weekly_Min(phamloop, 1, week14)
-weekly_Min(securityloop, 3, week14)
-weekly_Min(usherloop, 5, week14)
-weekly_Min(nurseryloopAM, 4, week14)
-weekly_Min(nurseryloopPM, 4, week14)
-weekly_Min(nurseryloopCaptAM, 2, week14)
-weekly_Min(nurseryloopCaptPM, 2, week14)
-weekly_Min(patrolloop, 4, week14)
-
-weekly_Min(soundloop, 2, week15)
-weekly_Min(phamloop, 1, week15)
-weekly_Min(securityloop, 3, week15)
-weekly_Min(usherloop, 5, week15)
-weekly_Min(nurseryloopAM, 4, week15)
-weekly_Min(nurseryloopPM, 4, week15)
-weekly_Min(nurseryloopCaptAM, 2, week15)
-weekly_Min(nurseryloopCaptPM, 2, week15)
-weekly_Min(patrolloop, 4, week15)
-
-weekly_Min(soundloop, 2, week16)
-weekly_Min(phamloop, 1, week16)
-weekly_Min(securityloop, 3, week16)
-weekly_Min(usherloop, 5, week16)
-weekly_Min(nurseryloopAM, 4, week16)
-weekly_Min(nurseryloopPM, 4, week16)
-weekly_Min(nurseryloopCaptAM, 2, week16)
-weekly_Min(nurseryloopCaptPM, 2, week16)
-weekly_Min(patrolloop, 4, week16)
-
-weekly_Min(soundloop, 2, week17)
-weekly_Min(phamloop, 1, week17)
-weekly_Min(securityloop, 3, week17)
-weekly_Min(usherloop, 5, week17)
-weekly_Min(nurseryloopAM, 4, week17)
-weekly_Min(nurseryloopPM, 4, week17)
-weekly_Min(nurseryloopCaptAM, 2, week17)
-weekly_Min(nurseryloopCaptPM, 2, week17)
-weekly_Min(patrolloop, 4, week17)
-
-weekly_Min(soundloop, 2, week18)
-weekly_Min(phamloop, 1, week18)
-weekly_Min(securityloop, 3, week18)
-weekly_Min(usherloop, 5, week18)
-weekly_Min(nurseryloopAM, 4, week18)
-weekly_Min(nurseryloopPM, 4, week18)
-weekly_Min(nurseryloopCaptAM, 2, week18)
-weekly_Min(nurseryloopCaptPM, 2, week18)
-weekly_Min(patrolloop, 4, week18)
-
-weekly_Min(soundloop, 2, week19)
-weekly_Min(phamloop, 1, week19)
-weekly_Min(securityloop, 3, week19)
-weekly_Min(usherloop, 5, week19)
-weekly_Min(nurseryloopAM, 4, week19)
-weekly_Min(nurseryloopPM, 4, week19)
-weekly_Min(nurseryloopCaptAM, 2, week19)
-weekly_Min(nurseryloopCaptPM, 2, week19)
-weekly_Min(patrolloop, 4, week19)
-
-weekly_Min(soundloop, 2, week20)
-weekly_Min(phamloop, 1, week20)
-weekly_Min(securityloop, 3, week20)
-weekly_Min(usherloop, 5, week20)
-weekly_Min(nurseryloopAM, 4, week20)
-weekly_Min(nurseryloopPM, 4, week20)
-weekly_Min(nurseryloopCaptAM, 2, week20)
-weekly_Min(nurseryloopCaptPM, 2, week20)
-weekly_Min(patrolloop, 4, week20)
-
-weekly_Min(soundloop, 2, week21)
-weekly_Min(phamloop, 1, week21)
-weekly_Min(securityloop, 3, week21)
-weekly_Min(usherloop, 5, week21)
-weekly_Min(nurseryloopAM, 4, week21)
-weekly_Min(nurseryloopPM, 4, week21)
-weekly_Min(nurseryloopCaptAM, 2, week21)
-weekly_Min(nurseryloopCaptPM, 2, week21)
-weekly_Min(patrolloop, 4, week21)
-
-weekly_Min(soundloop, 2, week22)
-weekly_Min(phamloop, 1, week22)
-weekly_Min(securityloop, 3, week22)
-weekly_Min(usherloop, 5, week22)
-weekly_Min(nurseryloopAM, 4, week22)
-weekly_Min(nurseryloopPM, 4, week22)
-weekly_Min(nurseryloopCaptAM, 2, week22)
-weekly_Min(nurseryloopCaptPM, 2, week22)
-weekly_Min(patrolloop, 4, week22)
-
-weekly_Min(soundloop, 2, week23)
-weekly_Min(phamloop, 1, week23)
-weekly_Min(securityloop, 3, week23)
-weekly_Min(usherloop, 5, week23)
-weekly_Min(nurseryloopAM, 4, week23)
-weekly_Min(nurseryloopPM, 4, week23)
-weekly_Min(nurseryloopCaptAM, 2, week23)
-weekly_Min(nurseryloopCaptPM, 2, week23)
-weekly_Min(patrolloop, 4, week23)
-
-weekly_Min(soundloop, 2, week24)
-weekly_Min(phamloop, 1, week24)
-weekly_Min(securityloop, 3, week24)
-weekly_Min(usherloop, 5, week24)
-weekly_Min(nurseryloopAM, 4, week24)
-weekly_Min(nurseryloopPM, 4, week24)
-weekly_Min(nurseryloopCaptAM, 2, week24)
-weekly_Min(nurseryloopCaptPM, 2, week24)
-weekly_Min(patrolloop, 4, week24)
+call_weekly_Mins(week1)
+call_weekly_Mins(week2)
+call_weekly_Mins(week3)
+call_weekly_Mins(week4)
+call_weekly_Mins(week5)
+call_weekly_Mins(week6)
+call_weekly_Mins(week7)
+call_weekly_Mins(week8)
+call_weekly_Mins(week9)
+call_weekly_Mins(week10)
+call_weekly_Mins(week11)
+call_weekly_Mins(week12)
+call_weekly_Mins(week13)
+call_weekly_Mins(week14)
+call_weekly_Mins(week15)
+call_weekly_Mins(week16)
+call_weekly_Mins(week17)
+call_weekly_Mins(week18)
+call_weekly_Mins(week19)
+call_weekly_Mins(week20)
+call_weekly_Mins(week21)
+call_weekly_Mins(week22)
+call_weekly_Mins(week23)
+call_weekly_Mins(week24)
+call_weekly_Mins(week25)
+call_weekly_Mins(week26)
+call_weekly_Mins(week27)
+call_weekly_Mins(week28)
+call_weekly_Mins(week29)
+call_weekly_Mins(week30)
+call_weekly_Mins(week31)
+call_weekly_Mins(week32)
+call_weekly_Mins(week33)
+call_weekly_Mins(week34)
+call_weekly_Mins(week35)
+call_weekly_Mins(week36)
+call_weekly_Mins(week37)
+call_weekly_Mins(week38)
+call_weekly_Mins(week39)
+call_weekly_Mins(week40)
+call_weekly_Mins(week41)
+call_weekly_Mins(week42)
+call_weekly_Mins(week43)
+call_weekly_Mins(week44)
+call_weekly_Mins(week45)
+call_weekly_Mins(week46)
+call_weekly_Mins(week47)
+call_weekly_Mins(week48)
+call_weekly_Mins(week49)
+call_weekly_Mins(week50)
+call_weekly_Mins(week51)
+call_weekly_Mins(week52)
 
 #--------------------------- OUTPUT to CSV file -------------------------------------------
 with open(output_file,'a') as csvfile:
@@ -436,7 +292,7 @@ with open(output_file,'a') as csvfile:
 	#open csv file and remove contents
 
 #---------------------- Function Call to format csv output ---------------------------------
-	def output_to_csv(weekNum, week_string):
+	def output_to_csv(weekNum, sunday_date_num):
 		soundWeek = []
 		phamWeek = []
 		securityWeek = []
@@ -447,6 +303,7 @@ with open(output_file,'a') as csvfile:
 		nurseryCaptPMWeek = []
 		parkingWeekAM = []
 		parkingWeekPM = []
+		week_string = []
 		for i in range(len(weekNum)):
 			if 0 <= i <= 1:
 				soundWeek.append(weekNum[i])
@@ -479,6 +336,8 @@ with open(output_file,'a') as csvfile:
 		parkingListAM = '\n'.join(parkingWeekAM)
 		parkingListPM = '\n'.join(parkingWeekPM)
 
+		
+		week_string = allsundays(year)[sunday_date_num - 1]
 		row1 = [week_string]
 		row2 = ["Sound", "Pham Driving", "Security", "Ushering", "Nursery AM", "Nursery Captains AM ", "Nursery PM", "Nursery Captains PM", "Parking Patrol AM", "Parking Patrol PM"]
 		row3 = [soundList, phamList, securityList, usherList, nurseryAMList, nurseryCaptAMList, nurseryPMList, nurseryCaptPMList, parkingListAM, parkingListPM]
@@ -489,31 +348,59 @@ with open(output_file,'a') as csvfile:
 #---------------------------------------------------------------------------------------------
 #------------------------------- Function Calls per week -------------------------------------
 
-	output_to_csv(week1, allsundays(year)[1])
-	output_to_csv(week2, allsundays(year)[2])
-	output_to_csv(week3, allsundays(year)[3])
-	output_to_csv(week4, allsundays(year)[4])
-	output_to_csv(week5, allsundays(year)[5])
-	output_to_csv(week6, allsundays(year)[6])
-	output_to_csv(week7, allsundays(year)[7])
-	output_to_csv(week8, allsundays(year)[8])
-	output_to_csv(week9, allsundays(year)[9])
-	output_to_csv(week10, allsundays(year)[10])
-	output_to_csv(week11, allsundays(year)[11])
-	output_to_csv(week12, allsundays(year)[12])
-	output_to_csv(week13, allsundays(year)[13])
-	output_to_csv(week14, allsundays(year)[14])
-	output_to_csv(week15, allsundays(year)[15])
-	output_to_csv(week16, allsundays(year)[16])
-	output_to_csv(week17, allsundays(year)[17])
-	output_to_csv(week18, allsundays(year)[18])
-	output_to_csv(week19, allsundays(year)[19])
-	output_to_csv(week20, allsundays(year)[20])
-	output_to_csv(week21, allsundays(year)[21])
-	output_to_csv(week22, allsundays(year)[22])
-	output_to_csv(week23, allsundays(year)[23])
-	output_to_csv(week24, allsundays(year)[24])
+	print("Schedule is for " + str(len(allsundays(2020))) + " weeks" + " for the year " + str(year))
 
-	
+	output_to_csv(week1, 1)
+	output_to_csv(week2, 2)
+	output_to_csv(week3, 3)
+	output_to_csv(week4, 4)
+	output_to_csv(week5, 5)
+	output_to_csv(week6, 6)
+	output_to_csv(week7, 7)
+	output_to_csv(week8, 8)
+	output_to_csv(week9, 9)
+	output_to_csv(week10, 10)
+	output_to_csv(week11, 11)
+	output_to_csv(week12, 12)
+	output_to_csv(week13, 13)
+	output_to_csv(week14, 14)
+	output_to_csv(week15, 15)
+	output_to_csv(week16, 16)
+	output_to_csv(week17, 17)
+	output_to_csv(week18, 18)
+	output_to_csv(week19, 19)
+	output_to_csv(week20, 20)
+	output_to_csv(week21, 21)
+	output_to_csv(week22, 22)
+	output_to_csv(week23, 23)
+	output_to_csv(week24, 24)
+	output_to_csv(week25, 25)
+	output_to_csv(week26, 26)
+	output_to_csv(week27, 27)
+	output_to_csv(week28, 28)
+	output_to_csv(week29, 29)
+	output_to_csv(week30, 30)
+	output_to_csv(week31, 31)
+	output_to_csv(week32, 32)
+	output_to_csv(week33, 33)
+	output_to_csv(week34, 34)
+	output_to_csv(week35, 35)
+	output_to_csv(week36, 36)
+	output_to_csv(week37, 37)
+	output_to_csv(week38, 38)
+	output_to_csv(week39, 39)
+	output_to_csv(week40, 40)
+	output_to_csv(week41, 41)
+	output_to_csv(week42, 42)
+	output_to_csv(week43, 43)
+	output_to_csv(week44, 44)
+	output_to_csv(week45, 45)
+	output_to_csv(week46, 46)
+	output_to_csv(week47, 47)
+	output_to_csv(week48, 48)
+	output_to_csv(week49, 49)
+	output_to_csv(week50, 50)
+	output_to_csv(week51, 51)
+	output_to_csv(week52, 52)
+
 #--------------------------------------------------------------------------------------------
-# need to make it more scalable 
