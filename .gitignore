@@ -1,0 +1,4 @@
+
+build-scheduler_frontend-*/
+
+scheduler_frontend/CMakeLists.txt.user
