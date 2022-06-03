@@ -2,3 +2,9 @@
 build-scheduler_frontend-*/
 
 scheduler_frontend/CMakeLists.txt.user
+
+scheduler_backend/.venv/
+
+scheduler_backend/__pycache__/
+
+scheduler_backend/backend.db
