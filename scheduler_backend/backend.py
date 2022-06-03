@@ -1,7 +1,7 @@
 import json
 import time
 
-from flask import Flask, request, session
+from flask import Flask, request, session, render_template, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 
 import os
@@ -48,3 +48,12 @@ class Ministry(db.Model):
     def __repr__(self):
         return f'<Message {self.id}>'
 
+
+@app.route("/")
+def wasm_frontend():
+    return render_template('appscheduler_frontend.html')
+
+@app.route("/<path:path>")
+def get_resource(path):
+    # TODO filter to only expected resources
+    return send_from_directory('static', path)
