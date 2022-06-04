@@ -17,5 +17,15 @@ void MasterController::setLoggedIn(bool val)
 {
     loggedIn = val;
     emit loggedInChanged();
-    qDebug() << "loggedIn =" << loggedIn;
+    qDebug().nospace() << "loggedIn = " << loggedIn;
+}
+
+void MasterController::registerUser(QString username, QString password)
+{
+    qDebug().nospace() << "register user (" << username << ", " << password << ")";
+}
+
+void MasterController::createMinistry(QString name, QString roles)
+{
+    qDebug().nospace() << "create ministry (" << name << ", " << roles << ")";
 }

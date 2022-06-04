@@ -15,6 +15,8 @@ public:
 
 public slots:
     void setLoggedIn(bool val);
+    void registerUser(QString username, QString password);
+    void createMinistry(QString name, QString roles);
 
 signals:
     void loggedInChanged();

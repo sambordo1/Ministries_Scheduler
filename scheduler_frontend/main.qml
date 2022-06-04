@@ -27,7 +27,12 @@ Window {
             if (master.LoggedIn) {
                 master.LoggedIn = false;
             } else {
-                master.LoggedIn = true;
+                popup_label1.text = qsTr("Username: ")
+                popup_text1.placeholderText = qsTr("Enter username")
+                popup_label2.text = qsTr("Password: ")
+                popup_text2.placeholderText = qsTr("Enter password")
+                popup_complete_button.text = qsTr("Login")
+                popup_window.open()
             }
         }
     }
@@ -84,47 +89,60 @@ Window {
 
     Popup {
         id: popup_window
-        width: 320
-        height: 240
+        width: parent.width * 0.75
+        height: parent.height * 0.75
+        topInset: 0
+        leftInset: 0
+        rightInset: 0
+        bottomInset: 0
         padding: 10
         anchors.centerIn: parent
         visible: false
         modal: true
         focus: false
-        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+        closePolicy: Popup.CloseOnEscape
 
         Column {
             id: popup_column
+            width: parent.width * 0.95
+            height: parent.height * 0.95
             spacing: 10
             anchors.centerIn: parent
             Row {
                 id: popup_row1
+                width: parent.width * 0.95
+                anchors.horizontalCenter: parent.horizontalCenter
                 spacing: 10
                 Text {
                     id: popup_label1
+                    width: parent.width * 0.2
                 }
                 TextField {
                     id: popup_text1
-                    width: 240
+                    width: parent.width * 0.7
                     height: 30
                     anchors.verticalCenter: popup_label1.verticalCenter
                 }
             }
             Row {
                 id: popup_row2
+                width: parent.width * 0.95
+                anchors.horizontalCenter: parent.horizontalCenter
                 spacing: 10
                 Text {
                     id: popup_label2
+                    width: parent.width * 0.2
                 }
                 TextField {
                     id: popup_text2
-                    width: 240
+                    width: parent.width * 0.7
                     height: 30
                     anchors.verticalCenter: popup_label2.verticalCenter
                 }
             }
             Row {
                 id: popup_button_row
+                width: parent.width * 0.95
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: 10
                 Button {
@@ -157,6 +175,14 @@ Window {
                     }
                     onClicked: {
                         popup_window.close()
+                        if (popup_complete_button.text === qsTr("Register")) {
+                            master.registerUser(popup_text1.text, popup_text2.text);
+                        } else if (popup_complete_button.text === qsTr("Create")) {
+                            master.createMinistry(popup_text1.text, popup_text2.text);
+                        } else if (popup_complete_button.text === qsTr("Login")) {
+                            master.LoggedIn = true;
+                        }
+
                         popup_text1.text = qsTr("")
                         popup_text2.text = qsTr("")
                     }
