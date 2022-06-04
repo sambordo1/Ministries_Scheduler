@@ -29,12 +29,19 @@ ministries = db.Table('ministries',
     db.Column('ministry_id', db.Integer, db.ForeignKey('ministry.id'), primary_key=True),
 )
 
+user_roles = db.Table('user_roles',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
+    db.Column('role_id', db.Integer, db.ForeignKey('role.id'), primary_key=True),
+)
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), unique=False, nullable=False)
     ministries = db.relationship('Ministry', secondary=ministries, lazy='subquery',
+        backref=db.backref('users', lazy='dynamic'))
+    roles = db.relationship('Role', secondary=user_roles, lazy='subquery',
         backref=db.backref('users', lazy='dynamic'))
     
     def __repr__(self):
@@ -44,9 +51,19 @@ class User(db.Model):
 class Ministry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=False, nullable=False)
+    roles = db.relationship('Role', backref='ministry', lazy='dynamic')
 
     def __repr__(self):
-        return f'<Message {self.id}>'
+        return f'<Message {self.name}>'
+
+
+class Role(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), unique=False, nullable=False)
+    ministry_id = db.Column(db.Integer, db.ForeignKey('ministry.id'), nullable=False)
+
+    def __repr__(self):
+        return f'<Message {self.name}>'
 
 
 @app.route("/")
