@@ -8,3 +8,7 @@ scheduler_backend/.venv/
 scheduler_backend/__pycache__/
 
 scheduler_backend/backend.db
+
+scheduler_backend/static/
+
+scheduler_backend/templates/
