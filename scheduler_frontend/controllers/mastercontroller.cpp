@@ -2,30 +2,40 @@
 #include <QDebug>
 
 MasterController::MasterController(QObject *parent,
-                                   QString sURL)
+                                   WebSocketController *wsc)
     : QObject{parent}
 {
-    serverURL = sURL;
+    m_wsc = wsc;
+    connect(this, SIGNAL(logIn(QString,QString)), SLOT(logUserIn(QString,QString)));
 }
 
-bool MasterController::getLoggedIn()
+bool MasterController::getLogIn()
 {
     return loggedIn;
 }
 
-void MasterController::setLoggedIn(bool val)
+void MasterController::setLogIn(bool login)
 {
-    loggedIn = val;
-    emit loggedInChanged();
+    loggedIn = login;
     qDebug().nospace() << "loggedIn = " << loggedIn;
+    emit logInChanged(loggedIn);
+}
+
+void MasterController::logUserIn(QString user, QString pwd)
+{
+    //! TODO log-in logic
+    setLogIn(true);
+    emit m_wsc->wsConnect();
 }
 
 void MasterController::registerUser(QString username, QString password)
 {
     qDebug().nospace() << "register user (" << username << ", " << password << ")";
+    emit m_wsc->sendMsg(QString("Created User: username=%1, pwd=%2").arg(username, password));
 }
 
 void MasterController::createMinistry(QString name, QString roles)
 {
     qDebug().nospace() << "create ministry (" << name << ", " << roles << ")";
+    emit m_wsc->sendMsg(QString("Created ministry: name=%1, roles=%2").arg(name, roles));
 }

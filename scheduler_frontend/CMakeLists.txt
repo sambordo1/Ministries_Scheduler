@@ -5,18 +5,23 @@ project(scheduler_frontend VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Quick WebSockets REQUIRED)
 
 qt_add_executable(appscheduler_frontend
     main.cpp
     controllers/mastercontroller.h
     controllers/mastercontroller.cpp
+    controllers/websocketcontroller.h
+    controllers/websocketcontroller.cpp
 )
+
+target_link_libraries(appscheduler_frontend PRIVATE Qt${QT_VERSION_MAJOR}::WebSockets)
 
 qt_add_qml_module(appscheduler_frontend
     URI scheduler_frontend
     VERSION 1.0
-    QML_FILES main.qml 
+    QML_FILES main.qml views/management.qml
 )
 
 set_target_properties(appscheduler_frontend PROPERTIES

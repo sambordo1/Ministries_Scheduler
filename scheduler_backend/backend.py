@@ -1,11 +1,9 @@
-import json
-import time
+import imp, json, time, os, re
 
 from flask import Flask, request, session, render_template, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
-
-import os
-import re
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_sock import Sock
 
 app = Flask(__name__)
 app.secret_key = b'woohoo!_random_secret_key_;-)'
@@ -15,6 +13,7 @@ database_path = os.path.join(path, 'backend.db')
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{database_path}?check_same_thread=False'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+sock = Sock(app)
 
 
 @app.cli.command('initdb')
@@ -74,3 +73,10 @@ def wasm_frontend():
 def get_resource(path):
     # TODO filter to only expected resources
     return send_from_directory('static', path)
+
+@sock.route("/ws")
+def ws_handler(sock):
+    while True:
+        # TODO send message handling to other methods
+        data = sock.receive()
+        sock.send(data)
