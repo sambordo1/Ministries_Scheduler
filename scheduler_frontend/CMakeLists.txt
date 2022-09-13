@@ -14,9 +14,8 @@ qt_add_executable(appscheduler_frontend
     controllers/mastercontroller.cpp
     controllers/websocketcontroller.h
     controllers/websocketcontroller.cpp
+    application.qrc
 )
-
-target_link_libraries(appscheduler_frontend PRIVATE Qt${QT_VERSION_MAJOR}::WebSockets)
 
 qt_add_qml_module(appscheduler_frontend
     URI scheduler_frontend
@@ -35,7 +34,7 @@ set_target_properties(appscheduler_frontend PROPERTIES
 target_compile_definitions(appscheduler_frontend
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(appscheduler_frontend
-    PRIVATE Qt6::Quick)
+    PRIVATE Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::WebSockets)
 
 add_custom_command(TARGET appscheduler_frontend POST_BUILD
     COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/../copy_wasm.sh

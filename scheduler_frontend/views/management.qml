@@ -1,26 +1,20 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import MinSched.Controllers 1.0
+import QtQuick.Controls.Material
 
 Item {
-
     anchors.fill: parent
 
     Button {
         id: user_button
         text: "Register User"
-        background: Rectangle {
-            implicitWidth: 100
-            implicitHeight: 40
-            color: user_button.down ? "#d6d6d6" : "#f6f6f6"
-            border.color: "#26282a"
-            border.width: 1
-            radius: 4
+        anchors {
+            right: parent.right
+            top: parent.top
+            rightMargin: 5
+            topMargin: 5
         }
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.rightMargin: 5
-        anchors.topMargin: 5
         onClicked: {
             popup_label1.text = qsTr("Username: ")
             popup_text1.placeholderText = qsTr("Enter username")
@@ -34,18 +28,13 @@ Item {
     Button {
         id: ministry_button
         text: "Create Ministry"
-        background: Rectangle {
-            implicitWidth: 100
-            implicitHeight: 40
-            color: ministry_button.down ? "#d6d6d6" : "#f6f6f6"
-            border.color: "#26282a"
-            border.width: 1
-            radius: 4
+        anchors {
+            right: user_button.left
+            top: parent.top
+            rightMargin: 5
+            topMargin: 5
         }
-        anchors.right: user_button.left
-        anchors.top: parent.top
-        anchors.rightMargin: 5
-        anchors.topMargin: 5
+
         onClicked: {
             popup_label1.text = qsTr("Name: ")
             popup_text1.placeholderText = qsTr("Enter ministry name")
@@ -195,15 +184,6 @@ Item {
             id: popup_cancel_button
             text: qsTr("Cancel")
 
-            background: Rectangle {
-                implicitWidth: 100
-                implicitHeight: 40
-                color: ministry_button.down ? "#d6d6d6" : "#f6f6f6"
-                border.color: "#26282a"
-                border.width: 1
-                radius: 4
-            }
-
             onClicked: {
                 popup_window.close()
                 popup_text1.text = qsTr("")
@@ -220,15 +200,6 @@ Item {
         Button {
             id: popup_complete_button
             text: qsTr("Done")
-
-            background: Rectangle {
-                implicitWidth: 100
-                implicitHeight: 40
-                color: ministry_button.down ? "#d6d6d6" : "#f6f6f6"
-                border.color: "#26282a"
-                border.width: 1
-                radius: 4
-            }
 
             onClicked: {
                 popup_window.close()

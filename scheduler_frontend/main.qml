@@ -1,25 +1,27 @@
 import QtQuick
 import QtQuick.Controls 2.15
 import MinSched.Controllers 1.0
+import QtQuick.Controls.Material
 
 Window {
     id: main_window
+    Material.theme: Material.Dark
     width: 640
     height: 480
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("ANTM Ministries Scheduler")
+    color: "#333333"
 
     Rectangle {
         id: top_bar
+        color: "#303030"
         height: 55
         width: 0.95 * parent.width
-        anchors.right: parent.right
-        anchors.left: parent.left
-        anchors.top: parent.top
-        color: "#111111"
-        border {
-            color: "#000000"
-            width: 2
+
+        anchors {
+            right: parent.right
+            left: parent.left
+            top: parent.top
         }
 
         Button {
@@ -31,24 +33,6 @@ Window {
             }
 
             text: "Menu"
-
-            background: Rectangle {
-                implicitWidth: 100
-                implicitHeight: 40
-                color: parent.down ? "#303030" : "#3f3f3f"
-                border.color: "#26282a"
-                border.width: 1
-                radius: 4
-            }
-
-            contentItem: Text {
-                text: parent.text
-                font: parent.font
-                opacity: enabled ? 1.0 : 0.3
-                color: parent.down ? "#a0a0a0" : "#f0f0f0"
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-            }
 
             onClicked: {
                 if (master.LoggedIn) {
@@ -67,23 +51,6 @@ Window {
 
             text: master.LoggedIn ? "Logout" : "Login"
 
-            background: Rectangle {
-                implicitWidth: 100
-                implicitHeight: 40
-                color: parent.down ? "#303030" : "#3f3f3f"
-                border.color: "#26282a"
-                border.width: 1
-                radius: 4
-            }
-            contentItem: Text {
-                text: login_button.text
-                font: login_button.font
-                opacity: enabled ? 1.0 : 0.3
-                color: login_button.down ? "#a0a0a0" : "#f0f0f0"
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-            }
-
             onClicked: {
                 if (master.LoggedIn) {
                     master.LoggedIn = false;
@@ -97,16 +64,14 @@ Window {
 
     Rectangle {
         id: main_view
+        color: "#333333"
         height: parent.height - top_bar.height
         width: 0.95 * parent.width
-        anchors.right: parent.right
-        anchors.left: parent.left
-        anchors.bottom: parent.bottom
-        anchors.top: top_bar.bottom
-        color: "#222222"
-        border {
-            color: "#000000"
-            width: 2
+        anchors {
+            right: parent.right
+            left: parent.left
+            bottom: parent.bottom
+            top: top_bar.bottom
         }
 
         Loader {
@@ -128,12 +93,6 @@ Window {
         modal: true
         focus: false
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
-
-        background: Rectangle {
-            anchors.fill: parent
-            color: "#181818"
-            radius: 4
-        }
 
         enter: Transition {
             ParallelAnimation {
@@ -323,15 +282,6 @@ Window {
             id: login_cancel_button
             text: qsTr("Cancel")
 
-            background: Rectangle {
-                implicitWidth: 100
-                implicitHeight: 40
-                color: login_cancel_button.down ? "#d6d6d6" : "#f6f6f6"
-                border.color: "#26282a"
-                border.width: 1
-                radius: 4
-            }
-
             onClicked: {
                 login_popup.close()
                 user_text.text = qsTr("")
@@ -348,15 +298,6 @@ Window {
         Button {
             id: login_complete_button
             text: qsTr("Login")
-
-            background: Rectangle {
-                implicitWidth: 100
-                implicitHeight: 40
-                color: login_complete_button.down ? "#d6d6d6" : "#f6f6f6"
-                border.color: "#26282a"
-                border.width: 1
-                radius: 4
-            }
 
             onClicked: {
                 login_popup.close()
